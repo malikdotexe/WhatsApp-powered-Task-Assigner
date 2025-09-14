@@ -1,0 +1,7 @@
+streamlit
+requests
+apscheduler
+sqlalchemy
+pandas
+phonenumbers
+python-dateutil

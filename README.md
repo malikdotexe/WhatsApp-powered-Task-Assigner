@@ -23,7 +23,7 @@ Flow: Create task → schedule interval job → job posts to WAHA → assignee g
 * Python 3.10+
 * A running WAHA server and a logged-in session Go to https://waha.devlike.pro/ and follow their docs to set it up. If you self-host with Docker, use their quick start.
 Sanity check WAHA:
-
+```
 #Replace values accordingly
 export WA_API_BASE="http://localhost:3000"
 export WA_API_SESSION="default"
@@ -31,27 +31,19 @@ export WA_API_SESSION="default"
 curl -X POST "$WA_API_BASE/api/sendText" \
   -H "Content-Type: application/json" \
   -d '{"chatId":"<E164digits>@c.us","text":"hello from WAHA","session":"'"$WA_API_SESSION"'"}'
+```
 If this succeeds, the app will be able to send messages.
 
 🛠️ **Install**
-
+```
 python -m venv venv
 source venv/bin/activate           # Windows: venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
-requirements.txt:
-
-streamlit
-requests
-apscheduler
-sqlalchemy
-pandas
-phonenumbers
-python-dateutil
-
+```
 ⚙️ **Configure**
 You can export environment variables or use a .env (if you load it yourself). Default values are reasonable for local use.
-
+```
 export WA_API_BASE="http://localhost:3000"       # your WAHA base URL
 export WA_API_SEND="/api/sendText"               # WAHA send endpoint
 export WA_API_SESSION="default"                  # your WAHA session name
@@ -67,10 +59,11 @@ WA_API_SESSION=default
 #App config
 WA_DB_URL=sqlite:///wa_task_app.sqlite
 WA_TZ=Asia/Kolkata
-
+```
 ▶️ **Run**
-
-streamlit run task_assigner_app.py
+```
+streamlit run app.py
+```
 Quickstart:
 1. Contacts: add at least one contact.
 2. Create Task: set first reminder time, pick frequency, choose “remind for N days.”
